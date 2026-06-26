@@ -1,0 +1,832 @@
+/* Root Color Scheme and Typography */
+:root {
+    --pink-bg-grad: linear-gradient(135deg, #ffe5ec 0%, #ffc2d1 50%, #ffb3c6 100%);
+    --pink-light: #ffe5ec;
+    --pink-medium: #ffb3c6;
+    --pink-dark: #ff7096;
+    --pink-deep: #ff477e;
+    --pastel-cream: #fff5f7;
+    --text-dark: #4a282f;
+    --text-muted: #855861;
+    --glass-bg: rgba(255, 255, 255, 0.85);
+    --glass-border: rgba(255, 255, 255, 0.5);
+    --shadow-soft: 0 10px 30px rgba(255, 112, 150, 0.2);
+    --shadow-btn: 0 6px 20px rgba(255, 71, 126, 0.35);
+    --font-cute: 'Fredoka', 'Quicksand', sans-serif;
+    --font-script: 'Pacifico', cursive;
+    --font-vintage: 'Playfair Display', serif;
+}
+
+/* Reset and Global Styles */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--font-cute);
+    background: var(--pink-bg-grad);
+    color: var(--text-dark);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* Heart Rain Background Container */
+#heart-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.floating-heart {
+    position: absolute;
+    bottom: -50px;
+    font-size: 24px;
+    color: var(--pink-dark);
+    opacity: 0.6;
+    animation: floatUp 8s linear infinite;
+    pointer-events: none;
+}
+
+/* App Main Container */
+.app-container {
+    width: 90%;
+    max-width: 500px;
+    z-index: 10;
+    perspective: 1000px;
+    padding: 20px 0;
+}
+
+/* Glassmorphic Cute Cards */
+.card {
+    background: var(--glass-bg);
+    border: 3px solid var(--glass-border);
+    border-radius: 30px;
+    padding: 40px 30px;
+    text-align: center;
+    box-shadow: var(--shadow-soft);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    transform-style: preserve-3d;
+}
+
+.card.hidden {
+    display: none;
+    opacity: 0;
+    transform: scale(0.8) rotateY(-10deg);
+}
+
+.card.active {
+    display: flex;
+    opacity: 1;
+    animation: cardEnter 0.7s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+/* Stickers Styling */
+.sticker-wrapper {
+    width: 180px;
+    height: 180px;
+    margin-bottom: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.sticker {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+/* Cute Typography styling */
+.welcome-text {
+    font-size: 1.8rem;
+    font-weight: 700;
+    line-height: 1.4;
+    margin-bottom: 35px;
+    color: var(--pink-deep);
+    text-shadow: 1px 1px 0px #fff, 2px 2px 0px rgba(255, 112, 150, 0.2);
+}
+
+.intro-message {
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    margin-bottom: 10px;
+    font-weight: 500;
+}
+
+.question-title {
+    font-size: 2.1rem;
+    font-weight: 700;
+    color: var(--pink-deep);
+    margin-bottom: 40px;
+    line-height: 1.3;
+    text-shadow: 1px 1px 0px #fff, 2px 2px 0px rgba(255, 112, 150, 0.2);
+}
+
+.celebration-title {
+    font-family: var(--font-cute);
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: var(--pink-deep);
+    margin-bottom: 15px;
+}
+
+.celebration-subtitle {
+    font-size: 1.1rem;
+    line-height: 1.5;
+    color: var(--text-dark);
+    margin-bottom: 30px;
+    font-weight: 500;
+}
+
+/* Cute Buttons Style */
+.button-group {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 100%;
+    align-items: center;
+    position: relative;
+}
+
+.proposal-buttons {
+    flex-direction: row;
+    justify-content: center;
+    gap: 20px;
+}
+
+.btn {
+    font-family: var(--font-cute);
+    font-size: 1.2rem;
+    font-weight: 700;
+    padding: 15px 35px;
+    border-radius: 50px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    outline: none;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, var(--pink-dark) 0%, var(--pink-deep) 100%);
+    color: white;
+    box-shadow: var(--shadow-btn);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.btn-primary:hover {
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 10px 25px rgba(255, 71, 126, 0.5);
+}
+
+.btn-primary:active {
+    transform: translateY(-2px) scale(0.98);
+}
+
+.btn-secondary {
+    background: white;
+    color: var(--pink-deep);
+    border: 3px solid var(--pink-medium);
+    box-shadow: 0 6px 15px rgba(255, 179, 198, 0.2);
+}
+
+.btn-secondary:hover {
+    background: var(--pink-light);
+    transform: translateY(-2px);
+}
+
+/* Runway No Button styling */
+.btn-no {
+    position: relative;
+    z-index: 100;
+    transition: all 0.15s ease;
+}
+
+/* Celebration Envelope / Love Letter */
+.love-letter {
+    background: #fff;
+    border-radius: 20px;
+    padding: 25px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05), inset 0 0 15px rgba(255, 229, 236, 0.5);
+    border: 2px dashed var(--pink-medium);
+    width: 100%;
+    position: relative;
+    margin-top: 10px;
+    transform: rotate(-1deg);
+    transition: transform 0.3s ease;
+}
+
+.love-letter:hover {
+    transform: rotate(0deg) scale(1.02);
+}
+
+.heart-seal {
+    font-size: 2rem;
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: white;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 10px rgba(255, 71, 126, 0.2);
+    animation: pulse 2s infinite;
+}
+
+.letter-content {
+    text-align: left;
+}
+
+.letter-date {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    font-weight: 700;
+    margin-bottom: 12px;
+}
+
+.letter-body {
+    font-family: var(--font-cute);
+    font-size: 1.05rem;
+    line-height: 1.6;
+    color: var(--text-dark);
+    margin-bottom: 15px;
+    font-style: italic;
+}
+
+.letter-signature {
+    font-family: var(--font-script);
+    font-size: 1.4rem;
+    color: var(--pink-deep);
+    text-align: right;
+}
+
+/* SCREEN 4: HEARTFELT LETTER TYPING EFFECT */
+.letter-lines-wrapper {
+    width: 100%;
+    max-height: 380px;
+    overflow-y: auto;
+    text-align: left;
+    padding-right: 10px;
+    margin-top: 15px;
+    scrollbar-width: thin;
+    scrollbar-color: var(--pink-medium) transparent;
+}
+
+/* Custom Scrollbar for Letter */
+.letter-lines-wrapper::-webkit-scrollbar {
+    width: 6px;
+}
+.letter-lines-wrapper::-webkit-scrollbar-thumb {
+    background-color: var(--pink-medium);
+    border-radius: 10px;
+}
+
+.letter-line {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 16px;
+    color: var(--text-dark);
+    opacity: 0;
+    transform: translateY(12px);
+    transition: opacity 1s cubic-bezier(0.215, 0.61, 0.355, 1), transform 1s cubic-bezier(0.215, 0.61, 0.355, 1);
+    font-weight: 500;
+}
+
+.letter-line.reveal {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.letter-line.highlight {
+    color: var(--pink-deep);
+    font-weight: 700;
+    font-size: 1.15rem;
+}
+
+/* Music Badge Control */
+.music-toggle-badge {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: rgba(255, 255, 255, 0.6);
+    border: 1px solid var(--pink-medium);
+    padding: 6px 12px;
+    border-radius: 30px;
+    font-size: 0.85rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    box-shadow: 0 4px 12px rgba(255, 112, 150, 0.1);
+    transition: all 0.3s ease;
+    z-index: 200;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+.music-toggle-badge:hover {
+    background: rgba(255, 255, 255, 0.9);
+    transform: scale(1.03);
+}
+
+.music-toggle-badge.muted {
+    border-color: #ccc;
+    background: rgba(240, 240, 240, 0.6);
+}
+
+.music-toggle-badge.muted .music-status-text {
+    text-decoration: line-through;
+    color: #888;
+}
+
+.music-icon {
+    font-size: 1rem;
+    animation: musicSpin 3s linear infinite;
+}
+
+.music-toggle-badge.muted .music-icon {
+    animation: none;
+}
+
+@keyframes musicSpin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* SCREEN 5: LOVE CERTIFICATE DESIGN */
+.certificate-card {
+    max-width: 600px;
+    padding: 20px;
+}
+
+.certificate-border {
+    border: 6px double var(--pink-dark);
+    padding: 15px;
+    border-radius: 20px;
+    width: 100%;
+    background: #fff;
+    box-shadow: inset 0 0 20px rgba(255, 229, 236, 0.6);
+}
+
+.certificate-inner {
+    border: 1.5px solid var(--pink-medium);
+    padding: 25px 20px;
+    border-radius: 12px;
+    background: var(--pastel-cream);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.cert-header {
+    margin-bottom: 20px;
+}
+
+.cert-dec {
+    font-size: 1.2rem;
+    color: var(--pink-dark);
+}
+
+.cert-title {
+    font-family: var(--font-vintage);
+    font-size: 1.8rem;
+    color: var(--pink-deep);
+    margin: 6px 0;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.cert-subtitle {
+    font-family: var(--font-cute);
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    font-weight: 500;
+}
+
+.cert-body {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.cert-date {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.cert-intro {
+    font-size: 1.05rem;
+    margin-bottom: 15px;
+    font-weight: 500;
+}
+
+.cert-couple {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    margin: 15px 0;
+    background: #fff;
+    padding: 10px 20px;
+    border-radius: 50px;
+    box-shadow: 0 4px 12px rgba(255, 112, 150, 0.1);
+    border: 1px solid var(--pink-light);
+}
+
+.partner-name {
+    font-family: var(--font-vintage);
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--text-dark);
+}
+
+.heart-separator {
+    font-size: 1.3rem;
+    animation: heartBeatTiny 1.2s infinite;
+}
+
+@keyframes heartBeatTiny {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.25); }
+}
+
+.cert-rules {
+    text-align: left;
+    background: #fff;
+    padding: 15px;
+    border-radius: 15px;
+    border: 1px dashed var(--pink-medium);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+}
+
+.rules-title {
+    font-size: 1rem;
+    color: var(--pink-deep);
+    margin-bottom: 8px;
+    font-weight: 700;
+}
+
+.cert-rules ul {
+    list-style-type: none;
+}
+
+.cert-rules li {
+    font-size: 0.9rem;
+    line-height: 1.5;
+    margin-bottom: 8px;
+    color: var(--text-dark);
+    position: relative;
+    padding-left: 14px;
+}
+
+.cert-rules li::before {
+    content: "🌸";
+    position: absolute;
+    left: 0;
+    top: 2px;
+    font-size: 0.8rem;
+}
+
+.cert-rules li:last-child {
+    margin-bottom: 0;
+}
+
+/* Signatures Design */
+.cert-signatures {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    gap: 20px;
+    margin-top: 15px;
+}
+
+.sig-block {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.sig-label {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    font-weight: 700;
+    margin-bottom: 6px;
+}
+
+.sig-container {
+    width: 100%;
+    height: 80px;
+    background: #fff;
+    border: 1.5px dashed var(--pink-medium);
+    border-radius: 12px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    box-shadow: inset 0 2px 6px rgba(0,0,0,0.03);
+}
+
+.signature-pad-container {
+    cursor: crosshair;
+}
+
+.sig-container canvas {
+    width: 100%;
+    height: 100%;
+}
+
+.btn-clear-sig {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background: rgba(255,255,255,0.8);
+    border: 1px solid var(--pink-medium);
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    font-size: 0.75rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    z-index: 10;
+    border: none;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.btn-clear-sig:hover {
+    background: var(--pink-light);
+    transform: scale(1.1);
+}
+
+.sig-name {
+    font-family: var(--font-script);
+    font-size: 1.15rem;
+    color: var(--pink-deep);
+    margin-top: 8px;
+    border-top: 1px solid var(--pink-medium);
+    padding-top: 4px;
+    width: 80%;
+    text-align: center;
+}
+
+/* SCREEN 6: SUCCESS POPUP OVERLAY */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(74, 40, 47, 0.4);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.5s ease;
+}
+
+.overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.success-popup {
+    width: 88%;
+    max-width: 420px;
+    padding: 35px 25px;
+    transform: scale(0.8);
+    transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    background: white;
+    border: 4px solid var(--pink-medium);
+}
+
+.overlay.active .success-popup {
+    transform: scale(1);
+}
+
+.popup-icon {
+    font-size: 3.5rem;
+    margin-bottom: 15px;
+    animation: heartBeatTiny 1.5s infinite;
+}
+
+.popup-title {
+    font-size: 1.8rem;
+    color: var(--pink-deep);
+    margin-bottom: 12px;
+}
+
+.popup-message {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--text-dark);
+    margin-bottom: 25px;
+    font-weight: 500;
+}
+
+.popup-buttons {
+    display: flex;
+    gap: 15px;
+    width: 100%;
+    justify-content: center;
+}
+
+/* Confetti Canvas Container */
+#confetti-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 30px;
+    pointer-events: none;
+    z-index: 5;
+}
+
+/* KEYFRAMES & ANIMATIONS */
+
+/* Entrance animation */
+@keyframes cardEnter {
+    0% {
+        opacity: 0;
+        transform: scale(0.8) translateY(50px) rotate(-3deg);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1) translateY(0) rotate(0deg);
+    }
+}
+
+/* Floating Hearts Background Animation */
+@keyframes floatUp {
+    0% {
+        transform: translateY(0) rotate(0deg) scale(0.5);
+        opacity: 0;
+    }
+    10% {
+        opacity: 0.7;
+    }
+    90% {
+        opacity: 0.7;
+    }
+    100% {
+        transform: translateY(-110vh) rotate(360deg) scale(1.2);
+        opacity: 0;
+    }
+}
+
+/* Gentle Welcome Sticker Bounce */
+.bounce-animation {
+    animation: cuteBounce 3s ease-in-out infinite;
+}
+
+@keyframes cuteBounce {
+    0%, 100% {
+        transform: translateY(0) rotate(0);
+    }
+    50% {
+        transform: translateY(-10px) rotate(3deg);
+    }
+}
+
+/* Proposal Sticker Heartbeat */
+.heartbeat-animation {
+    animation: cuteHeartbeat 1.8s ease-in-out infinite;
+}
+
+@keyframes cuteHeartbeat {
+    0%, 100% {
+        transform: scale(1);
+    }
+    25% {
+        transform: scale(1.05);
+    }
+    50% {
+        transform: scale(1);
+    }
+    75% {
+        transform: scale(1.05);
+    }
+}
+
+/* Happy Celebration Sticker Dance */
+.dance-animation {
+    animation: cuteDance 2.5s ease-in-out infinite;
+}
+
+@keyframes cuteDance {
+    0%, 100% {
+        transform: rotate(-5deg) scale(1);
+    }
+    50% {
+        transform: rotate(5deg) scale(1.05);
+    }
+}
+
+/* Pulsing Primary Buttons */
+.pulse-animation {
+    animation: btnPulse 2s infinite;
+}
+
+@keyframes btnPulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(255, 71, 126, 0.7);
+    }
+    70% {
+        box-shadow: 0 0 0 15px rgba(255, 71, 126, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(255, 71, 126, 0);
+    }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: translateX(-50%) scale(1);
+    }
+    50% {
+        transform: translateX(-50%) scale(1.15);
+    }
+}
+
+/* Mobile Responsiveness tweaks */
+@media (max-width: 480px) {
+    .card {
+        padding: 30px 20px;
+    }
+    .welcome-text {
+        font-size: 1.5rem;
+        margin-bottom: 25px;
+    }
+    .question-title {
+        font-size: 1.7rem;
+        margin-bottom: 30px;
+    }
+    .celebration-title {
+        font-size: 1.8rem;
+    }
+    .btn {
+        font-size: 1.1rem;
+        padding: 12px 25px;
+    }
+    .sticker-wrapper {
+        width: 140px;
+        height: 140px;
+    }
+    
+    .cert-title {
+        font-size: 1.4rem;
+    }
+    .partner-name {
+        font-size: 1.05rem;
+    }
+    .cert-rules li {
+        font-size: 0.82rem;
+    }
+    .sig-name {
+        font-size: 0.95rem;
+    }
+    .sig-container {
+        height: 70px;
+    }
+}
+
+#img-thien-sig {
+    width: 100% !important;
+    height: 130% !important;
+    object-fit: cover !important;
+    object-position: center bottom !important;
+    margin-top: 30px !important;
+    display: block !important;
+}
