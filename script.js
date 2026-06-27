@@ -12,10 +12,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const btnAcceptProposal = document.getElementById('btn-accept-proposal');
     const btnConfirmCert = document.getElementById('btn-confirm-cert');
     const btnClearSig = document.getElementById('btn-clear-sig');
+    const btnRefuse = document.getElementById('btn-refuse');
     
     const successOverlay = document.getElementById('success-overlay');
+    const refuseOverlay = document.getElementById('refuse-overlay');
     const btnDownloadCert = document.getElementById('btn-download-cert');
     const btnClosePopup = document.getElementById('btn-close-popup');
+    const btnRefuseConfirm = document.getElementById('btn-refuse-confirm');
 
     const heartContainer = document.getElementById('heart-container');
     const letterLinesContainer = document.getElementById('letter-lines-container');
@@ -75,6 +78,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
     btnReady.addEventListener('click', () => {
         transitionScreen(screenWelcome, screenProposal);
+    });
+
+    btnRefuse.addEventListener('click', () => {
+        refuseOverlay.classList.remove('hidden');
+        refuseOverlay.offsetHeight; // Reflow
+        refuseOverlay.classList.add('active');
+    });
+
+    btnRefuseConfirm.addEventListener('click', () => {
+        refuseOverlay.classList.remove('active');
+        setTimeout(() => {
+            refuseOverlay.classList.add('hidden');
+            transitionScreen(screenWelcome, screenProposal);
+        }, 500);
     });
 
     btnYes.addEventListener('click', () => {

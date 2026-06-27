@@ -21,8 +21,9 @@
                 <img src="assets/cute_sticker_1.png" alt="Cute Kitten Greeting" class="sticker bounce-animation">
             </div>
             <h1 class="welcome-text">Chào Trương Hồ Thảo Nhi, em bé của anh đã sẵn sàng chưa ạ ? :3</h1>
-            <div class="button-group">
+            <div class="button-group proposal-buttons">
                 <button id="btn-ready" class="btn btn-primary pulse-animation">Em sẵn sàng 🌸</button>
+                <button id="btn-refuse" class="btn btn-secondary">Đéo 😉</button>
             </div>
         </section>
 
@@ -153,6 +154,21 @@
                 <div class="popup-buttons">
                     <button id="btn-download-cert" class="btn btn-primary" style="padding: 10px 20px; font-size: 1rem;">Tải chứng nhận (PNG) 📥</button>
                     <button id="btn-close-popup" class="btn btn-secondary" style="padding: 10px 20px; font-size: 1rem;">Đóng</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- REFUSE POPUP OVERLAY -->
+        <div id="refuse-overlay" class="overlay hidden">
+            <div class="success-popup card" style="max-width: 420px; padding: 30px 25px;">
+                <div class="sticker-wrapper" style="width: 160px; height: 160px; margin-bottom: 15px;">
+                    <img id="img-refuse-sticker" src="assets/cat_begging.png" alt="Begging Cat" class="sticker bounce-animation">
+                </div>
+                <p class="popup-message" style="font-size: 1.15rem; line-height: 1.6; color: var(--text-dark); margin-bottom: 25px; font-weight: 500; text-align: center;">
+                    Đừng mà vợ iu, huhu, cái này là tấm lòng anh bé dành cho em, bấm xem thử đi nhé, năn nỉ 🥺🙏
+                </p>
+                <div class="popup-buttons">
+                    <button id="btn-refuse-confirm" class="btn btn-primary pulse-animation" style="padding: 12px 35px; font-size: 1.1rem;">Xem thử đi mà 🌸</button>
                 </div>
             </div>
         </div>
